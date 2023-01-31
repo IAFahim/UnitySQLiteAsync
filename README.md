@@ -176,22 +176,22 @@ namespace UnitySQLiteAsync._addOn.Example.Comparison
 
 # Simple class Method Summary
 
-## Save()
+## SaveValue()
 
 Saves values for various data types (Int, Float, Long, String, Bool) to the database using the various Store classes (
 IntStore, FloatStore, LongStore, StringStore, BoolStore) without adding them to a dictionary.
 
-## Load()
+## LoadValue()
 
 Loads values for various data types (Int, Float, Long, String, Bool) from the database using the various Store classes (
 IntStore, FloatStore, LongStore, StringStore, BoolStore) without adding them to a dictionary.
 
-## SaveKeepAsideInADictionary()
+## SaveValue(key, true) SaveKeepAsideInADictionary
 
 Saves values for various data types (Int, Float, Long, String, Bool) to the database using the various Store classes (
 IntStore, FloatStore, LongStore, StringStore, BoolStore) and adds them to a dictionary.
 
-## LoadKeepAsideInADictionary()
+## LoadValue(key, x, true) LoadKeepAsideInADictionary
 
 Loads values for various data types (Int, Float, Long, String, Bool) from the dictionary, if present. If not present,
 loads values from the database using the various Store classes (IntStore, FloatStore, LongStore, StringStore, BoolStore)
