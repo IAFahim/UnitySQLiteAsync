@@ -1,92 +1,210 @@
-# UnitySQLiteAsync
+# UnitySQLiteAsync Addon
 
-UnitySQLiteAsync is asynchronous SQLite-net support for Unity.
+Extension of UnitySQLiteAsync, So that we can finally get rid off PlayerPrefs. While make it as user-friendly as
+PlayerPrefs. With Added bonus of Keeping Track of data that needs to be synced with GooglePlay Services or Firebase, or
+any client-server database.
 
-[sqlite-net](https://github.com/praeclarum/sqlite-net) is simple, powerful, cross-platform SQLite client and ORM for .NET. But sqlite-net's Asynchronous API based on Threading, it's heavy and not matched to Unity threading(single-thread). So I made Asynchronous API based on [UniTask](https://github.com/Cysharp/UniTask), which is more suitable for Unity.
+## Added Features
 
-Also Can use Synchronous API.
+- [x] Static Connection `Sql.Connection == SQLiteAsyncConnection`
+- [x] `Save` 3 parameter `(Key, Value, addToDictionary)`
+    - `Key` retrieve key for Each Class
+    - `Value` value to be saved
+    - `addToDictionary` if true, add to dictionary
+- [x] `Load` 2 parameter `(Key, addToDictionary)`
+    - `key` retrieve key for Each Class
+    - `addToDictionary` if true, add to dictionary
 
-## Prerequisites
-Required Unity after 2018.3
+## Static Classes
 
+- [x] IntStore
+    - Load `int never = await IntStore.LoadValue("Never", 0);`
+    - Save `await IntStore.SaveValue("Never", 6);`
+- [x] FloatStore
+    - Load `float gonna = await FloatStore.LoadValue("gonna", 0f);`
+    - Save `await FloatStore.SaveValue("gonna", 9f);`
+- [x] LongStore
+    - Load `long give = await LongStore.LoadValue("give", 0L);`
+    - Save `await LongStore.LoadValue("give", 4L);`
+-[x] StringStore
+    - Load `string you = await StringStore.LoadValue("you", "");`
+    - Save `await StringStore.SaveValue("you", "2");`
+-[x] BoolStore
+    - Load `bool up = await BoolStore.LoadValue("up", true);`
+    - Save `await BoolStore.SaveValue("up", false);`
+- [x] DateTimeStore
+    - Load `DateTime dateTime = await DateTimeStore.LoadValue("dateTime", DateTime.Now);`
+    - Save `await DateTimeStore.SaveValue("dateTime", DateTime.Now);`
 
-### Installing
+## Base Class
 
-[Download package](https://github.com/kdw9502/UnitySQLiteAsync/releases/download/1.1.1/UnitySQLiteAsync.unitypackage) and import to your Unity project. You don't need to import test scripts in UnitySQLiteAsync package.
+- [x] `PrimitiveStore<T>` For any struct type (int, float, long, bool, DateTime, short, byte, char, decimal, double,
+  uint, ulong, ushort) you can create one just by extending it. Want to see How simple code for FloatStore is:
+  ```c#
+  namespace UnitySQLiteAsync._addOn.SQL.Stores
+  {
+    public class FloatStore: PrimitiveStore<float>
+    {
+      // thats it actually ;)
+    }
+  }
+  ```
+  if you want other type of store, just extend `PrimitiveStore<T>` and you are good to go. like this
+    ```c#
+    namespace UnitySQLiteAsync._addOn.SQL.Stores
+    {
+      public class DoubleStore: PrimitiveStore<double>
+      {
+        // thats it Now you have access to 
+      }
+    }
+    ```
 
-Package contains [UniTask](https://github.com/Cysharp/UniTask), [sqlite-net](https://github.com/praeclarum/sqlite-net), [sqlite-net-extensions](https://bitbucket.org/twincoders/sqlite-net-extensions)
+- [x] `Store<T>` What if you need Store a whole Class? go you covered also huh.
 
-## Example
-You can also find example in [sqlite-net Example](https://github.com/praeclarum/sqlite-net#example-time) and [Document](https://github.com/praeclarum/sqlite-net/wiki). you need to replace Task to UniTask, Task.Result to await UniTask.
-
-To create and use new database, __use path with Application.persistentDataPath.__
-
-To modify prepared database, insert database file in Assets/StreamingAssets and use path with Application.streamingAssetsPath.
-
-The library contains simple attributes that you can use to control the construction of tables
-```c#
-public class Customer
-{
-    [AutoIncrement, PrimaryKey]
-    public int Id { get; set; }
-
-    [MaxLength (64)]
-    public string FirstName { get; set; }
-
-    [MaxLength (64)]
-    public string LastName { get; set; }
-
-    [MaxLength (64), Indexed]
-    public string Email { get; set; }
-}
-```
-Insert row example
-```c#
-public async UniTask AddCustomerAsync(Customer customer)
-{
-    var databasePath = Application.persistentDataPath + "/" + databaseName;
-    var db = new SQLiteAsyncConnection(databasePath);
-
-    await db.InsertAsync(customer);
-}
-```
-Get example
-```c#
-public async UniTask<Customer> GetCustomerAsync(int id)
-{
-    var databasePath = Path.Combine(Application.persistentDataPath, databaseName);
-    var db = new SQLiteAsyncConnection(databasePath);
+  ```c#
+  public class Car // lets Make a car class store
+  {
+    [PrimaryKey] public string CarModel { get; set; }
+    public string NumberPlate { get; set; }
+    public int Age { get; set; }
     
-    Customer customer = await db.GetAsync<Customer> (customer.Id);
-    return customer;
-}
-```
-Create(or Update new column) example
+    public bool Sold { get; set; }
+
+    public override string ToString()
+    {
+        return $"CarModel: {CarModel}, NumberPlate: {NumberPlate}, Age: {Age}, Sold: {Sold}";
+    }
+  }
+  ```
+  Add this on top of your class
+  ```c#
+  public class CarStore: Store<Car>
+    {
+      //done
+    }
+  ```
+  Now full Class can look like this
+  ```c#
+  using SQLite;
+  using UnitySQLiteAsync._addOn.SQL.Stores;
+  
+  namespace UnitySQLiteAsync._addOn.Example.Car
+  {
+    public class CarStore: Store<Car>
+    {
+      // Now you have access to CarStore.LoadValue("CarModel", new Car()); and Save Also
+    }
+  
+    public class Car
+    {
+      [PrimaryKey] public string CarModel { get; set; }
+      public string NumberPlate { get; set; }
+      public int Age { get; set; }
+      
+      public bool Sold { get; set; }
+
+      public override string ToString()
+      {
+          return $"CarModel: {CarModel}, NumberPlate: {NumberPlate}, Age: {Age}, Sold: {Sold}";
+      }
+    }
+  }
+  ```
+
+## Dictionary
+
+Some times you need some data kept aside to save them later. Like Gems and Coins `Int`. You can add addToDictionary to
+true and now their value `copy` are kept aside when ever when you save or load. Then when you want to send them to data
+you have access to a dictionary of all the data that needs to be synced.
+
+like this
+
+`IntStore.dictionary` its just a simple dictionary of `string` and `type` Dictionary<string, T> where T is the type of
+store you are using here its `int`.
+
+`IntStore.dictionary["Never"]` will give you the value of `Never` that you saved.
+
+## Example Usage
+
 ```c#
-public async void Main()
+using UnityEngine;
+using UnitySQLiteAsync._addOn.SQL.Stores;
+
+namespace UnitySQLiteAsync._addOn.Example.Comparison
 {
-    var databasePath = $"{Application.persistentDataPath}/{databaseName}";
-    var db = new SQLiteAsyncConnection(databasePath);
-    
-    await db.CreateTableAsync<Customer> ();
-    
-    await AddCustomerAsync(new Customer());
-    var customer = await GetCustomerAsync(0);
+    public class Simple : MonoBehaviour
+    {
+        private async void Save()
+        {
+            await IntStore.SaveValue("Never", 6);
+            await FloatStore.SaveValue("gonna", 9f);
+            await LongStore.LoadValue("give", 4L);
+            await StringStore.SaveValue("you", "2");
+            await BoolStore.SaveValue("up", false);
+        }
+
+        private async void Load()
+        {
+            int never = await IntStore.LoadValue("Never", 0);
+            float gonna = await FloatStore.LoadValue("gonna", 0f);
+            long give = await LongStore.LoadValue("give", 0L);
+            string you = await StringStore.LoadValue("you", "");
+            bool up = await BoolStore.LoadValue("up", true);
+        }
+
+        private async void SaveKeepAsideInADictionary()
+        {
+            await IntStore.SaveValue("Never", 6, true);
+            await FloatStore.SaveValue("gonna", 9f, true);
+            await LongStore.LoadValue("give", 4L, true);
+            await StringStore.SaveValue("you", "2", true);
+            await BoolStore.SaveValue("up", false, true);
+        }
+
+        private async void LoadKeepAsideInADictionary()
+        {
+            int never = await IntStore.LoadValue("Never", 0, true);
+            float gonna = await FloatStore.LoadValue("gonna", 0f, true);
+            long give = await LongStore.LoadValue("give", 0L, true);
+            string you = await StringStore.LoadValue("you", "", true);
+            bool up = await BoolStore.LoadValue("up", true, true);
+        }
+    }
 }
 ```
 
-## Running the tests
-Since UniTask runs only in play mode, use [Unity Test Runner](https://docs.unity3d.com/2019.1/Documentation/Manual/testing-editortestsrunner.html) with PlayMode. Unity Test Runner also help you to test in device.
+# Simple class Method Summary
 
-![testRunner](https://user-images.githubusercontent.com/21076531/69316848-0276b200-0c7d-11ea-884f-f4bf43f99556.png)
+## Save()
 
-Android (V30, API Level 29) passed all 195 tests.
+Saves values for various data types (Int, Float, Long, String, Bool) to the database using the various Store classes (
+IntStore, FloatStore, LongStore, StringStore, BoolStore) without adding them to a dictionary.
 
-iOS (iPad 7th gen, iOS 13.5.1) passed all 195 tests.
+## Load()
 
+Loads values for various data types (Int, Float, Long, String, Bool) from the database using the various Store classes (
+IntStore, FloatStore, LongStore, StringStore, BoolStore) without adding them to a dictionary.
 
-All the tests were imported from [sqlite-net](https://github.com/praeclarum/sqlite-net) and converted to the Unitask version.
+## SaveKeepAsideInADictionary()
 
-## License
+Saves values for various data types (Int, Float, Long, String, Bool) to the database using the various Store classes (
+IntStore, FloatStore, LongStore, StringStore, BoolStore) and adds them to a dictionary.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+## LoadKeepAsideInADictionary()
+
+Loads values for various data types (Int, Float, Long, String, Bool) from the dictionary, if present. If not present,
+loads values from the database using the various Store classes (IntStore, FloatStore, LongStore, StringStore, BoolStore)
+and adds them to the dictionary.
+
+## More Example
+
+`┻━┻︵ \(°□°)/ ︵ ┻━┻`  There are more Examples in the Example folder: `TestSample/Assets/UnitySQLiteAsync/_addOn/Example`
+
+### Joke
+
+Once you go `Sql` you can't go Back to `PlayerPrefs`. hehe :D. I mean you can but why would you want to.
+
+A new Fork of SqliteAsync with some Encrypted features coming soon. SQLCipher is the way to go.
+
+<small>Love you :></small>

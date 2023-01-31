@@ -11,13 +11,13 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
         public static readonly Dictionary<string, T> dictionary = new();
         private static string _tableName;
 
-        public static async UniTask<T> LoadValue(string key, T defaultValue = default, bool addToList = false)
+        public static async UniTask<T> LoadValue(string key, T defaultValue = default, bool addToDictionary = false)
         {
             try
             {
                 var query = $"SELECT Value FROM {_tableName} WHERE Key = '{key}'";
                 var value = await Sql.Connection.ExecuteScalarAsync<T>(query);
-                if (addToList) dictionary[key] = value;
+                if (addToDictionary) dictionary[key] = value;
                 return value;
             }
             catch (SQLiteException e)
@@ -25,7 +25,7 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
                 if (e.Message.Contains("no such table"))
                 {
                     await CreateTable();
-                    if (addToList) dictionary[key] = defaultValue;
+                    if (addToDictionary) dictionary[key] = defaultValue;
                     return defaultValue;
                 }
 
@@ -33,17 +33,17 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
             }
         }
 
-        public static async UniTask<T> LoadValue(string key, bool addToList = false)
+        public static async UniTask<T> LoadValue(string key, bool addToDictionary = false)
         {
-            return await LoadValue(key, default, addToList);
+            return await LoadValue(key, default, addToDictionary);
         }
 
-        public static async UniTask SaveValue(string key, T value, bool addToList = false)
+        public static async UniTask SaveValue(string key, T value, bool addToDictionary = false)
         {
             if (!_tableCreated) await CreateTable();
             var query = $"INSERT OR REPLACE INTO {_tableName} (Key, Value) VALUES (?, ?)";
             await Sql.Connection.ExecuteAsync(query, key, value);
-            if (addToList) dictionary[key] = value;
+            if (addToDictionary) dictionary[key] = value;
         }
 
         private static async UniTask CreateTable()
