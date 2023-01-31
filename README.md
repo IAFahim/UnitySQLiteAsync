@@ -125,7 +125,7 @@ store you are using here its `int`.
 
 `IntStore.dictionary["Never"]` will give you the value of `Never` that you saved.
 
-## Example Usage
+### Example Usage
 
 ```c#
 using UnityEngine;
@@ -176,32 +176,32 @@ namespace UnitySQLiteAsync._addOn.Example.Comparison
 
 # Simple class Method Summary
 
-## SaveValue()
+### `SaveValue()`
 
 Saves values for various data types (Int, Float, Long, String, Bool) to the database using the various Store classes (
 IntStore, FloatStore, LongStore, StringStore, BoolStore) without adding them to a dictionary.
 
-## LoadValue()
+### `LoadValue()`
 
 Loads values for various data types (Int, Float, Long, String, Bool) from the database using the various Store classes (
 IntStore, FloatStore, LongStore, StringStore, BoolStore) without adding them to a dictionary.
 
-## SaveValue(key, true) SaveKeepAsideInADictionary
+### `SaveValue(key, true)` SaveKeepAsideInADictionary
 
 Saves values for various data types (Int, Float, Long, String, Bool) to the database using the various Store classes (
 IntStore, FloatStore, LongStore, StringStore, BoolStore) and adds them to a dictionary.
 
-## LoadValue(key, x, true) LoadKeepAsideInADictionary
+### `LoadValue(key, x, true)` LoadKeepAsideInADictionary
 
 Loads values for various data types (Int, Float, Long, String, Bool) from the dictionary, if present. If not present,
 loads values from the database using the various Store classes (IntStore, FloatStore, LongStore, StringStore, BoolStore)
 and adds them to the dictionary.
 
-## More Example
+### More Example
 
 `┻━┻︵ \(°□°)/ ︵ ┻━┻`  There are more Examples in the Example folder: `TestSample/Assets/UnitySQLiteAsync/_addOn/Example`
 
-### Joke
+#### Joke
 
 Once you go `Sql` you can't go Back to `PlayerPrefs`. hehe :D. I mean you can but why would you want to.
 
