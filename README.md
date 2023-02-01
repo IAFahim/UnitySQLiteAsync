@@ -26,10 +26,10 @@ any client-server database.
 - [x] LongStore
     - Load `long give = await LongStore.LoadValue("give", 0L);`
     - Save `await LongStore.LoadValue("give", 4L);`
--[x] StringStore
+- [x] StringStore
     - Load `string you = await StringStore.LoadValue("you", "");`
     - Save `await StringStore.SaveValue("you", "2");`
--[x] BoolStore
+- [x] BoolStore
     - Load `bool up = await BoolStore.LoadValue("up", true);`
     - Save `await BoolStore.SaveValue("up", false);`
 - [x] DateTimeStore
@@ -80,9 +80,9 @@ any client-server database.
   Add this on top of your class
   ```c#
   public class CarStore: Store<Car>
-    {
-      //done
-    }
+  {
+    //done
+  }
   ```
   Now full Class can look like this
   ```c#
@@ -201,7 +201,19 @@ and adds them to the dictionary.
 
 `┻━┻︵ \(°□°)/ ︵ ┻━┻`  There are more Examples in the Example folder: `TestSample/Assets/UnitySQLiteAsync/_addOn/Example`
 
-#### Joke
+
+
+### Questions and Answers
+
+#### Q: Why use `UniTask` rather then `Task`?
+
+#### A: Its more efficient and better. As async has a bit overhead. You can check their documentation for more info.
+
+#### Q: Does it work on `Android`, `Windows`?
+
+#### A: Yes it does. I have tested it on Android and Windows.
+
+### Joke
 
 Once you go `Sql` you can't go Back to `PlayerPrefs`. hehe :D. I mean you can but why would you want to.
 
