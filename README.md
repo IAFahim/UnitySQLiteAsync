@@ -221,7 +221,7 @@ A new Fork of SqliteAsync with some Encrypted features coming soon. SQLCipher is
 
 <small>Love you :></small>
 
-#### Reddit Post
+#### [Reddit Post](https://www.reddit.com/r/Unity3D/comments/10qm6j1/alternative_to_playerperfs_with_sqlite)
 
 I forked [UnitySQLiteAsync](https://github.com/kdw9502/UnitySQLiteAsync)  
 And added static few classes to make a SQLite based PlayerPrefs functionality [Github](https://github.com/IAFahim/UnitySQLiteAsync)
