@@ -11,8 +11,9 @@ any client-server database.
     - `Key` retrieve key for Each Class
     - `Value` value to be saved
     - `addToDictionary` if true, add to dictionary
-- [x] `Load` 2 parameter `(Key, addToDictionary)`
+- [x] `Load` 3 parameter `(Key, addToDictionary)`
     - `key` retrieve key for Each Class
+    - `defaultValue` if key not found
     - `addToDictionary` if true, add to dictionary
 
 ## Static Classes
