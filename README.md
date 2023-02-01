@@ -19,22 +19,22 @@ any client-server database.
 ## Static Classes
 
 - [x] IntStore
-    - Load `int never = await IntStore.LoadValue("Never", 0);`
+    - Load `int never = await IntStore.LoadValue("Never");`
     - Save `await IntStore.SaveValue("Never", 6);`
 - [x] FloatStore
-    - Load `float gonna = await FloatStore.LoadValue("gonna", 0f);`
+    - Load `float gonna = await FloatStore.LoadValue("gonna");`
     - Save `await FloatStore.SaveValue("gonna", 9f);`
 - [x] LongStore
-    - Load `long give = await LongStore.LoadValue("give", 0L);`
+    - Load `long give = await LongStore.LoadValue("give");`
     - Save `await LongStore.LoadValue("give", 4L);`
 - [x] StringStore
-    - Load `string you = await StringStore.LoadValue("you", "");`
+    - Load `string you = await StringStore.LoadValue("you");`
     - Save `await StringStore.SaveValue("you", "2");`
 - [x] BoolStore
-    - Load `bool up = await BoolStore.LoadValue("up", true);`
-    - Save `await BoolStore.SaveValue("up", false);`
+    - Load `bool up = await BoolStore.LoadValue("up", true, false);` 
+    - Save `await BoolStore.SaveValue("up", false, false);`
 - [x] DateTimeStore
-    - Load `DateTime dateTime = await DateTimeStore.LoadValue("dateTime", DateTime.Now);`
+    - Load `DateTime dateTime = await DateTimeStore.LoadValue("dateTime");`
     - Save `await DateTimeStore.SaveValue("dateTime", DateTime.Now);`
 
 ## Base Class
@@ -202,8 +202,6 @@ and adds them to the dictionary.
 
 `┻━┻︵ \(°□°)/ ︵ ┻━┻`  There are more Examples in the Example folder: `TestSample/Assets/UnitySQLiteAsync/_addOn/Example`
 
-
-
 ### Questions and Answers
 
 #### Q: Why use `UniTask` rather then `Task`?
@@ -225,16 +223,18 @@ A new Fork of SqliteAsync with some Encrypted features coming soon. SQLCipher is
 #### [Reddit Post](https://www.reddit.com/r/Unity3D/comments/10qm6j1/alternative_to_playerperfs_with_sqlite)
 
 I forked [UnitySQLiteAsync](https://github.com/kdw9502/UnitySQLiteAsync)  
-And added static few classes to make a SQLite based PlayerPrefs functionality [Github](https://github.com/IAFahim/UnitySQLiteAsync)
+And added static few classes to make a SQLite based PlayerPrefs
+functionality [Github](https://github.com/IAFahim/UnitySQLiteAsync)
 
-You don't need to write any SQL to store Int, Floats, String, Bool, etc. And it works as keyValue Store and you can even save an entire class without even touching SQLite.
+You don't need to write any SQL to store Int, Floats, String, Bool, etc. And it works as keyValue Store and you can even
+save an entire class without even touching SQLite.
 
 **// Just call it like this**
 
 `await IntStore.SaveValue("Never", 6);`  
 `await FloatStore.SaveValue("gonna", 9f);`  
-`int never = await IntStore.LoadValue("Never", 0);`  
-`float gonna = await FloatStore.LoadValue("gonna", 0f);`
+`int never = await IntStore.LoadValue("Never");`  
+`float gonna = await FloatStore.LoadValue("gonna");`
 
 **// Instead of this**
 
