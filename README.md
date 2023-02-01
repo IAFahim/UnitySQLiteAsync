@@ -186,12 +186,12 @@ IntStore, FloatStore, LongStore, StringStore, BoolStore) without adding them to 
 Loads values for various data types (Int, Float, Long, String, Bool) from the database using the various Store classes (
 IntStore, FloatStore, LongStore, StringStore, BoolStore) without adding them to a dictionary.
 
-### `SaveValue(key, true)` SaveKeepAsideInADictionary
+### `SaveValue(key, x, true)` SaveKeepAsideInADictionary
 
 Saves values for various data types (Int, Float, Long, String, Bool) to the database using the various Store classes (
 IntStore, FloatStore, LongStore, StringStore, BoolStore) and adds them to a dictionary.
 
-### `LoadValue(key, x, true)` LoadKeepAsideInADictionary
+### `LoadValue(key, d, true)` LoadKeepAsideInADictionary
 
 Loads values for various data types (Int, Float, Long, String, Bool) from the dictionary, if present. If not present,
 loads values from the database using the various Store classes (IntStore, FloatStore, LongStore, StringStore, BoolStore)
@@ -220,3 +220,29 @@ Once you go `Sql` you can't go Back to `PlayerPrefs`. hehe :D. I mean you can bu
 A new Fork of SqliteAsync with some Encrypted features coming soon. SQLCipher is the way to go.
 
 <small>Love you :></small>
+
+#### Reddit Post
+
+I forked [UnitySQLiteAsync](https://github.com/kdw9502/UnitySQLiteAsync)  
+And added static few classes to make a SQLite based PlayerPrefs functionality [Github](https://github.com/IAFahim/UnitySQLiteAsync)
+
+You don't need to write any SQL to store Int, Floats, String, Bool, etc. And it works as keyValue Store and you can even save an entire class without even touching SQLite.
+
+**// Just call it like this**
+
+`await IntStore.SaveValue("Never", 6);`  
+`await FloatStore.SaveValue("gonna", 9f);`  
+`int never = await IntStore.LoadValue("Never", 0);`  
+`float gonna = await FloatStore.LoadValue("gonna", 0f);`
+
+**// Instead of this**
+
+`PlayerPrefs.SetInt("Never", 6);`  
+`PlayerPrefs.SetFloat("gonna", 9f);`  
+`int never = PlayerPrefs.GetInt("Never");`  
+`float gonna = PlayerPrefs.GetFloat("gonna");`
+
+You can also keep aside value that you want to store to maybe sync with save service  
+`SaveValue(key, x, true)`  
+`LoadValue(key, d, true)`  
+The third Parameter would keep it inside a dictionary. That you can access from anywhere.
