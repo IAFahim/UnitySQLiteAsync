@@ -8,11 +8,11 @@ any client-server database.
 
 - [x] Static Connection `Sql.Connection == SQLiteAsyncConnection`
 - [x] `Save` 3 parameter `(Key, Value, addToDictionary)`
-    - `Key` retrieve key for Each Class
+    - `Key` value retrieve key
     - `Value` value to be saved
     - `addToDictionary` if true, add to dictionary
 - [x] `Load` 3 parameter `(Key, defaultValue, addToDictionary)`
-    - `key` retrieve key for Each Class
+    - `key` value retrieve key
     - `defaultValue` if key not found
     - `addToDictionary` if true, add to dictionary
 
