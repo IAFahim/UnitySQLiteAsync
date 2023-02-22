@@ -9,7 +9,7 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
         private static bool _tableCreated;
         public static readonly Dictionary<string, T> dictionary = new();
 
-        public static async UniTask<T> LoadValue(string key, bool addToList = false)
+        public static async UniTask<T> Load(string key, bool addToList = false)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
             }
         }
 
-        public static async UniTask SaveValue(T value, string key = null)
+        public static async UniTask Save(T value, string key, bool addToList = false)
         {
             if (!_tableCreated)
             {
@@ -38,7 +38,7 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
             }
 
             await Sql.Connection.InsertOrReplaceAsync(value);
-            if (key != null) dictionary[key] = value;
+            if (addToList) dictionary[key] = value;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
         public static readonly Dictionary<string, T> dictionary = new();
         private static string _tableName;
 
-        public static async UniTask<T> LoadValue(string key, T defaultValue = default, bool addToDictionary = false)
+        public static async UniTask<T> Load(string key, T defaultValue = default, bool addToDictionary = false)
         {
             try
             {
@@ -33,12 +33,12 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
             }
         }
 
-        public static async UniTask<T> LoadValue(string key, bool addToDictionary = false)
+        public static async UniTask<T> Load(string key, bool addToDictionary = false)
         {
-            return await LoadValue(key, default, addToDictionary);
+            return await Load(key, default, addToDictionary);
         }
 
-        public static async UniTask SaveValue(string key, T value, bool addToDictionary = false)
+        public static async UniTask Save(string key, T value, bool addToDictionary = false)
         {
             if (!_tableCreated) await CreateTable();
             var query = $"INSERT OR REPLACE INTO {_tableName} (Key, Value) VALUES (?, ?)";
@@ -72,6 +72,16 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
             { typeof(string), "TEXT" },
             { typeof(DateTime), "DATETIME" }
         };
+
+        private static async UniTask DeleteAll()
+        {
+            _tableName = typeof(T).Name + "Store";
+            var createTableQuery =
+                $"CREATE TABLE IF NOT EXISTS {_tableName} (Key TEXT PRIMARY KEY, Value {GetSqLiteType(typeof(T))})";
+            await Sql.Connection.ExecuteAsync(createTableQuery);
+            
+            
+        }
 
         private static string GetSqLiteType(Type type)
         {

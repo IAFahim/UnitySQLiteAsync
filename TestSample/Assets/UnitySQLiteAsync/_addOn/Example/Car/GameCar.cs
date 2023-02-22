@@ -12,8 +12,8 @@ namespace UnitySQLiteAsync._addOn.Example.Car
                 Age = 10,
             };
             
-            await CarStore.SaveValue(car);
-            var result= await CarStore.LoadValue("BMW");
+            await CarStore.Save(car, car.CarModel);
+            var result= await CarStore.Load(car.CarModel);
             Debug.Log(result);
         }
     }

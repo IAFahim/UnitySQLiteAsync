@@ -21,12 +21,12 @@ namespace UnitySQLiteAsync._addOn.Example.Currency
         
         public async UniTask Save()
         {
-            await FloatStore.SaveValue(name, value, true);
+            await FloatStore.Save(name, value, true);
         }
 
         public async UniTask Load()
         {
-            value = await FloatStore.LoadValue(name, defaultAmount, true);
+            value = await FloatStore.Load(name, defaultAmount, true);
         }
     }
 }
