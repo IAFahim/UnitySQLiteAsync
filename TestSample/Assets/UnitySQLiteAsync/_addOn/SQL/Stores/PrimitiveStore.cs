@@ -8,7 +8,7 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
     public abstract class PrimitiveStore<T>
     {
         private static bool _tableCreated;
-        public static readonly Dictionary<string, T> dictionary = new();
+        public readonly static Dictionary<string, T> dictionary = new();
         private static string _tableName;
 
         public static async UniTask<T> Load(string key, T defaultValue = default, bool addToDictionary = false)
@@ -73,14 +73,13 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
             { typeof(DateTime), "DATETIME" }
         };
 
-        private static async UniTask DeleteAll()
+        public static async UniTask DeleteAll()
         {
             _tableName = typeof(T).Name + "Store";
-            var createTableQuery =
-                $"CREATE TABLE IF NOT EXISTS {_tableName} (Key TEXT PRIMARY KEY, Value {GetSqLiteType(typeof(T))})";
-            await Sql.Connection.ExecuteAsync(createTableQuery);
-            
-            
+            var dropTableQuery = $"DROP TABLE IF EXISTS {_tableName}";
+            await Sql.Connection.ExecuteAsync(dropTableQuery);
+            dictionary.Clear();
+            _tableCreated = false;
         }
 
         private static string GetSqLiteType(Type type)
