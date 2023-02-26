@@ -31,7 +31,7 @@ namespace Test
             await GameData.SetInt("gonna", 9);
             await GameData.SetString("give", "you up");
             await GameData.SetBool("let", true);
-            logText.text = "Done";
+            logText.text = "Set - Done";
         }
 
 
@@ -42,13 +42,14 @@ namespace Test
             var gonna = await GameData.GetInt("gonna", 9);
             var give = await GameData.GetString("give", "you up");
             var let = await GameData.GetBool("let", true);
-            logText.text = $"{never} {gonna} {give} {let}";
+            logText.text = $"Get - {never} {gonna} {give} {let}";
         }
 
         [Button]
         async UniTask Delete()
         {
             await GameData.DeleteAll();
+            logText.text = "Delete - Done";
         }
 
         [Button]
@@ -58,7 +59,7 @@ namespace Test
             IntStore.dictionary.TryGetValue("gonna", out var gonna);
             StringStore.dictionary.TryGetValue("give", out var give);
             BoolStore.dictionary.TryGetValue("let", out var let);
-            logText.text = $"{never} {gonna} {give} {let}";
+            logText.text = $"CheckDictionary - {never} {gonna} {give} {let}";
         }
     }
 }

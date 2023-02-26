@@ -1009,11 +1009,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7b471886a985c4c8aef654d78305d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logText: {fileID: 0}
-  setButton: {fileID: 0}
-  getButton: {fileID: 0}
-  deleteButton: {fileID: 0}
-  checkDictionaryButton: {fileID: 0}
+  logText: {fileID: 1250636774}
+  setButton: {fileID: 1014276722}
+  getButton: {fileID: 894220167}
+  deleteButton: {fileID: 2067794193}
+  checkDictionaryButton: {fileID: 155066827}
 --- !u!1 &1812083646
 GameObject:
   m_ObjectHideFlags: 0
