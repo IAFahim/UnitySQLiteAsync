@@ -1,12 +1,29 @@
+using System;
 using Cysharp.Threading.Tasks;
 using EasyButtons;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 using UnitySQLiteAsync._addOn.SQL.Stores;
 
 namespace Test
 {
     public class TestGameData : MonoBehaviour
     {
+        public Text logText;
+        public Button setButton;
+        public Button getButton;
+        public Button deleteButton;
+        public Button checkDictionaryButton;
+
+        private void Awake()
+        {
+            setButton.onClick.AddListener(() => { Set().Forget(); });
+            getButton.onClick.AddListener(() => { Get().Forget(); });
+            deleteButton.onClick.AddListener(() => { Delete().Forget(); });
+            checkDictionaryButton.onClick.AddListener(() => { CheckDictionary().Forget(); });
+        }
+
         [Button]
         async UniTask Set()
         {
@@ -14,6 +31,7 @@ namespace Test
             await GameData.SetInt("gonna", 9);
             await GameData.SetString("give", "you up");
             await GameData.SetBool("let", true);
+            logText.text = "Done";
         }
 
 
@@ -24,10 +42,7 @@ namespace Test
             var gonna = await GameData.GetInt("gonna", 9);
             var give = await GameData.GetString("give", "you up");
             var let = await GameData.GetBool("let", true);
-            Debug.Log(never);
-            Debug.Log(gonna);
-            Debug.Log(give);
-            Debug.Log(let);
+            logText.text = $"{never} {gonna} {give} {let}";
         }
 
         [Button]
@@ -43,10 +58,7 @@ namespace Test
             IntStore.dictionary.TryGetValue("gonna", out var gonna);
             StringStore.dictionary.TryGetValue("give", out var give);
             BoolStore.dictionary.TryGetValue("let", out var let);
-            Debug.Log(never);
-            Debug.Log(gonna);
-            Debug.Log(give);
-            Debug.Log(let);
+            logText.text = $"{never} {gonna} {give} {let}";
         }
     }
 }
