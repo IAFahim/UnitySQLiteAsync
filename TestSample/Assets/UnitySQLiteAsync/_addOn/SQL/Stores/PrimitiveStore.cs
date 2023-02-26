@@ -8,7 +8,7 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
     public abstract class PrimitiveStore<T>
     {
         private static bool _tableCreated;
-        public readonly static Dictionary<string, T> dictionary = new();
+        public static Dictionary<string, T> dictionary = new();
         private static string _tableName;
 
         public static async UniTask<T> Load(string key, T defaultValue = default, bool addToDictionary = false)

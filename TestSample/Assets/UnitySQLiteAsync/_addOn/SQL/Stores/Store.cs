@@ -7,7 +7,7 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
     public abstract class Store<T> where T : class, new()
     {
         private static bool _tableCreated;
-        public static readonly Dictionary<string, T> dictionary = new();
+        public static Dictionary<string, T> dictionary = new();
 
         public static async UniTask<T> Load(string key, bool addToList = false)
         {

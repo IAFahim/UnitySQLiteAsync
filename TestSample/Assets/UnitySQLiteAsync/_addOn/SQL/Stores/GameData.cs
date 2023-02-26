@@ -1,33 +1,32 @@
-using System.Collections.Generic;
-using System.Globalization;
 using Cysharp.Threading.Tasks;
 
 namespace UnitySQLiteAsync._addOn.SQL.Stores
 {
     public static class GameData
     {
-        public static Dictionary<string, string> Dictionary = new();
-
         #region Get
 
-        public static async UniTask<int> GetInt(string key, int defaultValue = 0, bool addToList = false)
+        public static async UniTask<int> GetInt(string key, int defaultValue = 0, bool addToList = true)
         {
             var data = await IntStore.Load(key, defaultValue, addToList);
-            Dictionary[key] = data.ToString();
             return data;
         }
 
-        public static async UniTask<float> GetFloat(string key, float defaultValue = 0, bool addToList = false)
+        public static async UniTask<float> GetFloat(string key, float defaultValue = 0, bool addToList = true)
         {
             var data = await FloatStore.Load(key, defaultValue, addToList);
-            Dictionary[key] = data.ToString(CultureInfo.InvariantCulture);
             return data;
         }
 
-        public static async UniTask<string> GetString(string key, string defaultValue = "", bool addToList = false)
+        public static async UniTask<string> GetString(string key, string defaultValue = "", bool addToList = true)
         {
             var data = await StringStore.Load(key, defaultValue, addToList);
-            Dictionary[key] = data;
+            return data;
+        }
+
+        public static async UniTask<bool> GetBool(string key, bool defaultValue = false, bool addToList = true)
+        {
+            var data = await BoolStore.Load(key, defaultValue, addToList);
             return data;
         }
 
@@ -36,32 +35,34 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
 
         #region Set
 
-        public static async UniTask SetInt(string key, int value, bool addToList = false)
+        public static async UniTask SetInt(string key, int value, bool addToList = true)
         {
             await IntStore.Save(key, value, addToList);
-            Dictionary[key] = value.ToString();
         }
 
-        public static async UniTask SetFloat(string key, float value, bool addToList = false)
+        public static async UniTask SetFloat(string key, float value, bool addToList = true)
         {
             await FloatStore.Save(key, value, addToList);
-            Dictionary[key] = value.ToString(CultureInfo.InvariantCulture);
         }
 
-        public static async UniTask SetString(string key, string value, bool addToList = false)
+        public static async UniTask SetString(string key, string value, bool addToList = true)
         {
             await StringStore.Save(key, value, addToList);
-            Dictionary[key] = value;
+        }
+
+        public static async UniTask SetBool(string key, bool value, bool addToList = true)
+        {
+            await BoolStore.Save(key, value, addToList);
         }
 
         #endregion
-        
+
         public static async UniTask DeleteAll()
         {
             await FloatStore.DeleteAll();
             await IntStore.DeleteAll();
             await StringStore.DeleteAll();
-            Dictionary.Clear();
+            await BoolStore.DeleteAll();
         }
     }
 }
