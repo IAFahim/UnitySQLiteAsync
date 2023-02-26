@@ -27,10 +27,10 @@ namespace Test
         [Button]
         async UniTask Set()
         {
-            await GameData.SetFloat("Never", 6f);
-            await GameData.SetInt("gonna", 9);
-            await GameData.SetString("give", "you up");
-            await GameData.SetBool("let", true);
+            await GameDB.SetFloat("Never", 6f);
+            await GameDB.SetInt("gonna", 9);
+            await GameDB.SetString("give", "you up");
+            await GameDB.SetBool("let", true);
             logText.text = "Set - Done";
         }
 
@@ -38,17 +38,17 @@ namespace Test
         [Button]
         async UniTask Get()
         {
-            var never = await GameData.GetFloat("Never", 6f);
-            var gonna = await GameData.GetInt("gonna", 9);
-            var give = await GameData.GetString("give", "you up");
-            var let = await GameData.GetBool("let", true);
+            var never = await GameDB.GetFloat("Never", 6f);
+            var gonna = await GameDB.GetInt("gonna", 9);
+            var give = await GameDB.GetString("give", "you up");
+            var let = await GameDB.GetBool("let", true);
             logText.text = $"Get - {never} {gonna} {give} {let}";
         }
 
         [Button]
         async UniTask Delete()
         {
-            await GameData.DeleteAll();
+            await GameDB.DeleteAll();
             logText.text = "Delete - Done";
         }
 

@@ -396,7 +396,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Set
+  m_Text: Set Random Data
 --- !u!222 &706020791
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 1014276723}
   - component: {fileID: 1014276722}
   m_Layer: 5
-  m_Name: Set
+  m_Name: ' Set Random Data'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

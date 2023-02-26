@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 
 namespace UnitySQLiteAsync._addOn.SQL.Stores
 {
-    public static class GameData
+    public static class GameDB
     {
         #region Get
 
