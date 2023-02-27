@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace _Script.SQL.Stores.Util
+namespace UnitySQLiteAsync._addOn.GameDB.Stores.Util
 {
     public class BitMask<T> where T : Enum
     {

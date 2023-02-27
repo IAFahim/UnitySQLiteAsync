@@ -1,4 +1,4 @@
-﻿namespace UnitySQLiteAsync._addOn.SQL.Stores
+﻿namespace UnitySQLiteAsync._addOn.GameDB.Stores
 {
     public class LongStore: PrimitiveStore<long>
     {

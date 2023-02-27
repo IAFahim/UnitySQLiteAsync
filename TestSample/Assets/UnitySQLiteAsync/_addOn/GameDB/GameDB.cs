@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
-using UnitySQLiteAsync._addOn.SQL.Stores;
+using UnitySQLiteAsync._addOn.GameDB.Stores;
 
-namespace UnitySQLiteAsync._addOn.SQL
+namespace UnitySQLiteAsync._addOn.GameDB
 {
     public static class GameDB
     {

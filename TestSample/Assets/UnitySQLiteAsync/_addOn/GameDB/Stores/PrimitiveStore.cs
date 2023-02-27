@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using UnitySQLiteAsync._addOn.SQL.Type;
+using UnitySQLiteAsync._addOn.GameDB.Type;
 
-namespace UnitySQLiteAsync._addOn.SQL.Stores
+namespace UnitySQLiteAsync._addOn.GameDB.Stores
 {
     public abstract class PrimitiveStore<T>
     {

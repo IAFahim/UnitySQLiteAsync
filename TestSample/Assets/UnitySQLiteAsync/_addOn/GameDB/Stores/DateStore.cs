@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UnitySQLiteAsync._addOn.SQL.Stores
+namespace UnitySQLiteAsync._addOn.GameDB.Stores
 {
     public class DateStore: PrimitiveStore<DateTime>
     {

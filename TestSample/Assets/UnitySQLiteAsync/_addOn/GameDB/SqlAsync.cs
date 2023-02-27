@@ -2,7 +2,7 @@
 using SQLite;
 using UnityEngine;
 
-namespace UnitySQLiteAsync._addOn.SQL
+namespace UnitySQLiteAsync._addOn.GameDB
 {
     internal static class SqlAsync
     {

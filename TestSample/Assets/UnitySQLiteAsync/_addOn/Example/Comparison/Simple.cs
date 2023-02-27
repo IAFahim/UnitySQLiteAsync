@@ -1,6 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnitySQLiteAsync._addOn.SQL.Stores;
+using UnitySQLiteAsync._addOn.GameDB.Stores;
 
 namespace UnitySQLiteAsync._addOn.Example.Comparison
 {

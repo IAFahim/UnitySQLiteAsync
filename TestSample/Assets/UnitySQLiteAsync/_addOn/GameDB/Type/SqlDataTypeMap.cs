@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UnitySQLiteAsync._addOn.SQL.Type
+namespace UnitySQLiteAsync._addOn.GameDB.Type
 {
     public static class SqlDataTypeMap
     {

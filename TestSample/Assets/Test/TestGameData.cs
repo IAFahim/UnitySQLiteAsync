@@ -1,11 +1,9 @@
-using System;
 using Cysharp.Threading.Tasks;
 using EasyButtons;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using UnitySQLiteAsync._addOn.SQL;
-using UnitySQLiteAsync._addOn.SQL.Stores;
+using UnitySQLiteAsync._addOn.GameDB;
+using UnitySQLiteAsync._addOn.GameDB.Stores;
 
 namespace Test
 {

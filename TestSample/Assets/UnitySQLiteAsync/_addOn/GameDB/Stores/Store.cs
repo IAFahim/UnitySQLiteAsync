@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 
-namespace UnitySQLiteAsync._addOn.SQL.Stores
+namespace UnitySQLiteAsync._addOn.GameDB.Stores
 {
     public abstract class Store<T> where T : class, new()
     {
