@@ -8,38 +8,38 @@ namespace UnitySQLiteAsync._addOn.Example.Comparison
     {
         private async UniTask Save()
         {
-            await IntStore.Save("Never", 6);
-            await FloatStore.Save("gonna", 9f);
-            await LongStore.Load("give", 4L);
-            await StringStore.Load("you", "2");
-            await BoolStore.Load("up", false, false);
+            await IntStore.SetAsync("Never", 6);
+            await FloatStore.SetAsync("gonna", 9f);
+            await LongStore.GetAsync("give", 4L);
+            await StringStore.GetAsync("you", "2");
+            await BoolStore.GetAsync("up", false, false);
         }
 
         private async UniTask Load()
         {
-            int never = await IntStore.Load("Never", 0);
-            float gonna = await FloatStore.Load("gonna", 0f);
-            long give = await LongStore.Load("give", 0L);
-            string you = await StringStore.Load("you", "");
-            bool up = await BoolStore.Load("up", true, false);
+            int never = await IntStore.GetAsync("Never", 0);
+            float gonna = await FloatStore.GetAsync("gonna", 0f);
+            long give = await LongStore.GetAsync("give", 0L);
+            string you = await StringStore.GetAsync("you", "");
+            bool up = await BoolStore.GetAsync("up", true, false);
         }
 
         private async UniTask SaveKeepAsideInADictionary()
         {
-            await IntStore.Save("Never", 6, true);
-            await FloatStore.Save("gonna", 9f, true);
-            await LongStore.Load("give", 4L, true);
-            await StringStore.Load("you", "2", true);
-            await BoolStore.Load("up", false, true);
+            await IntStore.SetAsync("Never", 6, true);
+            await FloatStore.SetAsync("gonna", 9f, true);
+            await LongStore.GetAsync("give", 4L, true);
+            await StringStore.GetAsync("you", "2", true);
+            await BoolStore.GetAsync("up", false, true);
         }
 
         private async UniTask LoadKeepAsideInADictionary()
         {
-            int never = await IntStore.Load("Never", 0, true);
-            float gonna = await FloatStore.Load("gonna", 0f, true);
-            long give = await LongStore.Load("give", 0L, true);
-            string you = await StringStore.Load("you", "", true);
-            bool up = await BoolStore.Load("up", true, true);
+            int never = await IntStore.GetAsync("Never", 0, true);
+            float gonna = await FloatStore.GetAsync("gonna", 0f, true);
+            long give = await LongStore.GetAsync("give", 0L, true);
+            string you = await StringStore.GetAsync("you", "", true);
+            bool up = await BoolStore.GetAsync("up", true, true);
         }
     }
 }

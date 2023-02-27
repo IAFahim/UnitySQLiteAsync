@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace UnitySQLiteAsync._addOn.SQL
 {
-    public static class Sql
+    internal static class Sql
     {
-        private static SQLiteAsyncConnection _connection;
+        private static SQLiteConnection _connection;
 
-        public static SQLiteAsyncConnection Connection
+        public static SQLiteConnection Connection
         {
             get
             {
                 if (_connection == null)
                 {
                     var path = Path.Combine(Application.persistentDataPath, "db.sqlite");
-                    _connection = new SQLiteAsyncConnection(path);
+                    _connection = new SQLiteConnection(path);
                 }
 
                 return _connection;

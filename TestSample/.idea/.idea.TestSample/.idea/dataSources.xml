@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="db.sqlite" uuid="6142526a-0f51-4697-94e0-7fdbacd24d6c">
+    <data-source source="LOCAL" name="db.sqlite" uuid="dee64d4c-289e-40b3-84ce-0b361aa29cda">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$USER_HOME$/AppData/LocalLow/DefaultCompany/UnityTestFramework/db.sqlite</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="dbAsync.sqlite" uuid="ddb355d2-5b4c-4734-8d10-2501a2bd276c">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$USER_HOME$/AppData/LocalLow/DefaultCompany/UnityTestFramework/dbAsync.sqlite</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

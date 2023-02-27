@@ -1,95 +1,98 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using SQLite;
+using UnitySQLiteAsync._addOn.SQL.Type;
 
 namespace UnitySQLiteAsync._addOn.SQL.Stores
 {
     public abstract class PrimitiveStore<T>
     {
         private static bool _tableCreated;
+        private static bool _tableCreatedAsync;
         public static Dictionary<string, T> dictionary = new();
         private static string _tableName;
+        public static string Foo;
 
-        public static async UniTask<T> Load(string key, T defaultValue = default, bool addToDictionary = false)
+        private static string GetQuery(string key)
         {
-            try
-            {
-                var query = $"SELECT Value FROM {_tableName} WHERE Key = '{key}'";
-                var value = await Sql.Connection.ExecuteScalarAsync<T>(query);
-                if (addToDictionary) dictionary[key] = value;
-                return value;
-            }
-            catch (SQLiteException e)
-            {
-                if (e.Message.Contains("no such table"))
-                {
-                    await CreateTable();
-                    if (addToDictionary) dictionary[key] = defaultValue;
-                    return defaultValue;
-                }
-
-                throw;
-            }
+            return $"SELECT Value FROM {_tableName} WHERE Key = '{key}'";
         }
 
-        public static async UniTask<T> Load(string key, bool addToDictionary = false)
+        private static string SetQuery(string key)
         {
-            return await Load(key, default, addToDictionary);
+            return $"INSERT OR REPLACE INTO {_tableName} (Key, Value) VALUES (?, ?)";
         }
 
-        public static async UniTask Save(string key, T value, bool addToDictionary = false)
+        private static string CreateTableQuery()
         {
-            if (!_tableCreated) await CreateTable();
-            var query = $"INSERT OR REPLACE INTO {_tableName} (Key, Value) VALUES (?, ?)";
-            await Sql.Connection.ExecuteAsync(query, key, value);
+            return
+                $"CREATE TABLE IF NOT EXISTS {_tableName} (Key TEXT PRIMARY KEY, Value {SqlDataTypeMap.Get(typeof(T))})";
+        }
+
+
+        public static T Get(string key, T defaultValue = default, bool addToDictionary = true)
+        {
+            if (!_tableCreated) CreateTable();
+            var value = Sql.Connection.ExecuteScalar<T>(GetQuery(key)) ?? defaultValue;
+            if (addToDictionary) dictionary[key] = value;
+            return value;
+        }
+
+        public static async UniTask<T> GetAsync(string key, T defaultValue = default, bool addToDictionary = true)
+        {
+            if (!_tableCreatedAsync) await CreateTableAsync();
+            var value = await SqlAsync.AsyncConnection.ExecuteScalarAsync<T>(GetQuery(key)) ?? defaultValue;
+            if (addToDictionary) dictionary[key] = value;
+            return value;
+        }
+
+        public static void Set(string key, T value, bool addToDictionary = true)
+        {
+            if (!_tableCreated) CreateTable();
+            Sql.Connection.Execute(SetQuery(key), key, value);
             if (addToDictionary) dictionary[key] = value;
         }
 
-        private static async UniTask CreateTable()
+        public static async UniTask SetAsync(string key, T value, bool addToDictionary = true)
+        {
+            if (!_tableCreatedAsync) await CreateTableAsync();
+            await SqlAsync.AsyncConnection.ExecuteAsync(SetQuery(key), key, value);
+            if (addToDictionary) dictionary[key] = value;
+        }
+
+        private static void CreateTable()
         {
             _tableName = typeof(T).Name + "Store";
-            var createTableQuery =
-                $"CREATE TABLE IF NOT EXISTS {_tableName} (Key TEXT PRIMARY KEY, Value {GetSqLiteType(typeof(T))})";
-            await Sql.Connection.ExecuteAsync(createTableQuery);
+            var createTableQuery = CreateTableQuery();
+            Sql.Connection.Execute(createTableQuery);
             _tableCreated = true;
         }
 
-        private static readonly Dictionary<Type, string> TypeMap = new()
+        private static async UniTask CreateTableAsync()
         {
-            { typeof(int), "INTEGER" },
-            { typeof(long), "INTEGER" },
-            { typeof(short), "INTEGER" },
-            { typeof(byte), "INTEGER" },
-            { typeof(uint), "INTEGER" },
-            { typeof(ulong), "INTEGER" },
-            { typeof(ushort), "INTEGER" },
-            { typeof(sbyte), "INTEGER" },
-            { typeof(bool), "INTEGER" },
-            { typeof(float), "REAL" },
-            { typeof(double), "REAL" },
-            { typeof(decimal), "REAL" },
-            { typeof(string), "TEXT" },
-            { typeof(DateTime), "DATETIME" }
-        };
+            _tableName = typeof(T).Name + "Store";
+            var createTableQuery = CreateTableQuery();
+            await SqlAsync.AsyncConnection.ExecuteAsync(createTableQuery);
+            _tableCreatedAsync = true;
+        }
 
-        public static async UniTask DeleteAll()
+        public static void DeleteAll()
         {
             _tableName = typeof(T).Name + "Store";
             var dropTableQuery = $"DROP TABLE IF EXISTS {_tableName}";
-            await Sql.Connection.ExecuteAsync(dropTableQuery);
+            Sql.Connection.Execute(dropTableQuery);
             dictionary.Clear();
             _tableCreated = false;
         }
 
-        private static string GetSqLiteType(Type type)
-        {
-            if (TypeMap.TryGetValue(type, out var sqliteType))
-            {
-                return sqliteType;
-            }
 
-            throw new ArgumentException("The specified type is not a supported SQLite type.");
+        public static async UniTask DeleteAllAsync()
+        {
+            _tableName = typeof(T).Name + "Store";
+            var dropTableQuery = $"DROP TABLE IF EXISTS {_tableName}";
+            await SqlAsync.AsyncConnection.ExecuteAsync(dropTableQuery);
+            dictionary.Clear();
+            _tableCreatedAsync = false;
         }
     }
 }

@@ -11,12 +11,12 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
         private static bool _tableCreated;
         public static readonly Dictionary<string, BitMask<T>> dictionary = new();
 
-        public static async UniTask<BitMask<T>> LoadValue(string key, bool addToList = false)
+        public static async UniTask<BitMask<T>> Get(string key, bool addToList = false)
         {
             try
             {
                 var query = $"SELECT Value FROM BitMaskStore WHERE Key = '{key}'";
-                var value = await Sql.Connection.ExecuteScalarAsync<long>(query);
+                var value = await SqlAsync.AsyncConnection.ExecuteScalarAsync<long>(query);
                 var bitmask = new BitMask<T>(value);
                 if (addToList) dictionary[key] = bitmask;
                 return bitmask;
@@ -33,11 +33,11 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
             }
         }
 
-        public static async UniTask SaveValue(string key, BitMask<T> value, bool addToList = false)
+        public static async UniTask Set(string key, BitMask<T> value, bool addToList = false)
         {
             if (!_tableCreated) await CreateTable();
             var query = $"INSERT OR REPLACE INTO BitMaskStore (Key, Value) VALUES (?, ?)";
-            await Sql.Connection.ExecuteScalarAsync<int>(query, key, value.Value);
+            await SqlAsync.AsyncConnection.ExecuteScalarAsync<int>(query, key, value.Value);
             if (addToList) dictionary[key] = value;
         }
         
@@ -45,7 +45,7 @@ namespace UnitySQLiteAsync._addOn.SQL.Stores
         private static async UniTask CreateTable()
         {
             var createTableQuery = $"CREATE TABLE IF NOT EXISTS BitMaskStore (Key TEXT PRIMARY KEY, Value INTEGER)";
-            await Sql.Connection.ExecuteAsync(createTableQuery);
+            await SqlAsync.AsyncConnection.ExecuteAsync(createTableQuery);
             _tableCreated = true;
         }
     }
