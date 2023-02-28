@@ -53,7 +53,12 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
 
         public void DeleteAll()
         {
-            Sql.Connection.DeleteAll<T>();
+            Sql.Connection.DropTable<T>();
+        }
+        
+        public async UniTask DeleteAllAsync()
+        {
+            await SqlAsync.AsyncConnection.DropTableAsync<T>();
         }
     }
 }
