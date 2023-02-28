@@ -25,8 +25,7 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
         public static BitMask<T> Get(BitMask<T> obj, string key, bool addToList = false)
         {
             if (!_tableCreated) CreateTable();
-            var value = Sql.Connection.ExecuteScalar<long>(GetQuery(key));
-            obj.Value = value;
+            obj.Value= Sql.Connection.CreateCommand(GetQuery(key)).ExecuteScalar<long>();
             if (addToList) dictionary[key] = obj;
             return obj;
         }
@@ -34,8 +33,7 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
         public static async UniTask<BitMask<T>> GetAsync(BitMask<T> obj, string key, bool addToList = false)
         {
             if (!_tableCreated) await CreateTableAsync();
-            var value = await SqlAsync.AsyncConnection.ExecuteScalarAsync<long>(GetQuery(key));
-            obj.Value = value;
+            obj.Value = await SqlAsync.AsyncConnection.ExecuteScalarAsync<long>(GetQuery(key));
             if (addToList) dictionary[key] = obj;
             return obj;
         }
@@ -43,7 +41,7 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
         private static void Set(string key, BitMask<T> value, bool addToList = false)
         {
             if (!_tableCreated) CreateTable();
-            Sql.Connection.ExecuteScalar<int>(SetQuery, key, value.Value);
+            Sql.Connection.CreateCommand(SetQuery, key, value.Value).ExecuteNonQuery();
             if (addToList) dictionary[key] = value;
         }
 

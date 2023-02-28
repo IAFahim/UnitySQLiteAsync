@@ -28,11 +28,18 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
                 $"CREATE TABLE IF NOT EXISTS {_tableName} (Key TEXT PRIMARY KEY, Value {SqlDataTypeMap.Get(typeof(T))})";
         }
 
+        private static string DeleteTableQuery()
+        {
+            return $"DROP TABLE IF EXISTS {_tableName}";
+        }
+
 
         public static T Get(string key, T defaultValue = default, bool addToDictionary = true)
         {
             if (!_tableCreated) CreateTable();
-            var value = Sql.Connection.ExecuteScalar<T>(GetQuery(key)) ?? defaultValue;
+            var command = Sql.Connection.CreateCommand(GetQuery(key));
+            var result = command.ExecuteScalar<T>();
+            var value = result == null ? defaultValue : result;
             if (addToDictionary) dictionary[key] = value;
             return value;
         }
@@ -48,7 +55,8 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
         public static void Set(string key, T value, bool addToDictionary = true)
         {
             if (!_tableCreated) CreateTable();
-            Sql.Connection.Execute(SetQuery(key), key, value);
+            var command = Sql.Connection.CreateCommand(SetQuery(key), key, value);
+            command.ExecuteNonQuery();
             if (addToDictionary) dictionary[key] = value;
         }
 
@@ -62,24 +70,21 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
         private static void CreateTable()
         {
             _tableName = typeof(T).Name + "Store";
-            var createTableQuery = CreateTableQuery();
-            Sql.Connection.Execute(createTableQuery);
+            Sql.Connection.Execute(CreateTableQuery());
             _tableCreated = true;
         }
 
         private static async UniTask CreateTableAsync()
         {
             _tableName = typeof(T).Name + "Store";
-            var createTableQuery = CreateTableQuery();
-            await SqlAsync.AsyncConnection.ExecuteAsync(createTableQuery);
+            await SqlAsync.AsyncConnection.ExecuteAsync(CreateTableQuery());
             _tableCreatedAsync = true;
         }
 
         public static void DeleteAll()
         {
             _tableName = typeof(T).Name + "Store";
-            var dropTableQuery = $"DROP TABLE IF EXISTS {_tableName}";
-            Sql.Connection.Execute(dropTableQuery);
+            Sql.Connection.Execute(DeleteTableQuery());
             dictionary.Clear();
             _tableCreated = false;
         }
@@ -88,8 +93,7 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
         public static async UniTask DeleteAllAsync()
         {
             _tableName = typeof(T).Name + "Store";
-            var dropTableQuery = $"DROP TABLE IF EXISTS {_tableName}";
-            await SqlAsync.AsyncConnection.ExecuteAsync(dropTableQuery);
+            await SqlAsync.AsyncConnection.ExecuteAsync(DeleteTableQuery());
             dictionary.Clear();
             _tableCreatedAsync = false;
         }
