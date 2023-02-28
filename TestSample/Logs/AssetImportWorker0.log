@@ -1619,3 +1619,285 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002818 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.560 seconds
+Domain Reload Profiling:
+	ReloadAssembly (560ms)
+		BeginReloadAssembly (89ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (410ms)
+			LoadAssemblies (52ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (121ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (21ms)
+			SetupLoadedEditorAssemblies (195ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (20ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (29ms)
+				ProcessInitializeOnLoadAttributes (123ms)
+				ProcessInitializeOnLoadMethodAttributes (20ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.22 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1904 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 17 unused Assets / (24.7 KB). Loaded Objects now: 2454.
+Memory consumption went from 80.1 MB to 80.0 MB.
+Total: 2.470300 ms (FindLiveObjects: 0.113600 ms CreateObjectMapping: 0.036900 ms MarkObjects: 2.305600 ms  DeleteObjects: 0.013600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003020 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 0.33 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.565 seconds
+Domain Reload Profiling:
+	ReloadAssembly (566ms)
+		BeginReloadAssembly (91ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (406ms)
+			LoadAssemblies (52ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (121ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (21ms)
+			SetupLoadedEditorAssemblies (190ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (20ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (30ms)
+				ProcessInitializeOnLoadAttributes (115ms)
+				ProcessInitializeOnLoadMethodAttributes (19ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.29 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1904 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 17 unused Assets / (24.7 KB). Loaded Objects now: 2457.
+Memory consumption went from 80.1 MB to 80.1 MB.
+Total: 2.079500 ms (FindLiveObjects: 0.113200 ms CreateObjectMapping: 0.040400 ms MarkObjects: 1.912000 ms  DeleteObjects: 0.013300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002160 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 0.37 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.561 seconds
+Domain Reload Profiling:
+	ReloadAssembly (562ms)
+		BeginReloadAssembly (90ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (405ms)
+			LoadAssemblies (53ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (121ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (21ms)
+			SetupLoadedEditorAssemblies (189ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (20ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (28ms)
+				ProcessInitializeOnLoadAttributes (116ms)
+				ProcessInitializeOnLoadMethodAttributes (20ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.23 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1904 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 17 unused Assets / (24.6 KB). Loaded Objects now: 2460.
+Memory consumption went from 80.1 MB to 80.1 MB.
+Total: 2.129100 ms (FindLiveObjects: 0.115300 ms CreateObjectMapping: 0.041100 ms MarkObjects: 1.959800 ms  DeleteObjects: 0.012300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 677818.599586 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/StringStore.cs
+  artifactKey: Guid(95f6206c441d45d5a48fd30fdafd3fbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/StringStore.cs using Guid(95f6206c441d45d5a48fd30fdafd3fbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20c49ebb5f58f71430dcdf38edbf6e01') in 0.022842 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.034406 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/Util/Bitmask.cs
+  artifactKey: Guid(c075e8b019bd44f088856bd8214eb3ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/Util/Bitmask.cs using Guid(c075e8b019bd44f088856bd8214eb3ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ddc428492372ffa36c39c83c6c04c746') in 0.003657 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.014721 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/SqlAsync.cs
+  artifactKey: Guid(2dc0211ed25c4071ae84bd7849623346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/SqlAsync.cs using Guid(2dc0211ed25c4071ae84bd7849623346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2363ea1b9d609a6555138a5a5e8159a') in 0.003595 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.005489 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/Store.cs
+  artifactKey: Guid(470d9166b0064ea79006dc6197610300) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/Store.cs using Guid(470d9166b0064ea79006dc6197610300) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd8d9403994c77974c077677ff67d341') in 0.003414 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000964 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/DateStore.cs
+  artifactKey: Guid(fdb54b397a264912bd90daccfe963721) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/DateStore.cs using Guid(fdb54b397a264912bd90daccfe963721) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d9ada5137a5babdc1dc425fdc00efba') in 0.003496 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.023390 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/PrimitiveStore.cs
+  artifactKey: Guid(7d91255500194da186cfa03435602aa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/PrimitiveStore.cs using Guid(7d91255500194da186cfa03435602aa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af64c71395fed5a6d15a00ecfab6c7f9') in 0.003405 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.003560 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/Sql.cs
+  artifactKey: Guid(7b6617c905d346a090dbb924a4cd867d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/Sql.cs using Guid(7b6617c905d346a090dbb924a4cd867d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2627c0f05191188204baa3c4131f4e2b') in 0.003278 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.038580 seconds.
+  path: Assets/Scenes/TestScene.unity
+  artifactKey: Guid(d2497434c2b6eea4eb1393d78ab79c2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/TestScene.unity using Guid(d2497434c2b6eea4eb1393d78ab79c2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ef986aff69ebdd0aa42d81ad71f00d0') in 0.003596 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.013813 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/Example/Currency/Currency.cs
+  artifactKey: Guid(ddd2ddcc349c4194bc0cc20ec654cc33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/Example/Currency/Currency.cs using Guid(ddd2ddcc349c4194bc0cc20ec654cc33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b9ccce05846d0298b84c2a7a2411e2e') in 0.003223 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.002472 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/BitMaskStore.cs
+  artifactKey: Guid(7c5c4a2ec478429ba325a5bd549e7089) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/BitMaskStore.cs using Guid(7c5c4a2ec478429ba325a5bd549e7089) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68749aed9e865eea81a009d7cc676093') in 0.003332 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.052464 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB
+  artifactKey: Guid(63f7de1c1dac47608956f8590faa8c84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB using Guid(63f7de1c1dac47608956f8590faa8c84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb5214df99ae63f78ecfa4d87a717cb3') in 0.003440 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.002334 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/GameDB.cs
+  artifactKey: Guid(f9152118c8cc9064faf31222afbf163b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/GameDB.cs using Guid(f9152118c8cc9064faf31222afbf163b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4fc0cb0418e0f79c45a369c45d850e19') in 0.000965 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.064111 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/Example/Car/CarStore.cs
+  artifactKey: Guid(a68ba5b3ba884616977f45ef448ed3a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/Example/Car/CarStore.cs using Guid(a68ba5b3ba884616977f45ef448ed3a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df5d4ce6d1a6a729561573c4c6e97bc2') in 0.003757 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.005104 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/FloatStore.cs
+  artifactKey: Guid(13e9c80ab53341d6bc859897310ed62c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/FloatStore.cs using Guid(13e9c80ab53341d6bc859897310ed62c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24625892e30525f9751fd80fc0c94c63') in 0.003490 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.011152 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/Example/Comparison/Simple.cs
+  artifactKey: Guid(b4c99719db944c31b3d12dc810fd4731) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/Example/Comparison/Simple.cs using Guid(b4c99719db944c31b3d12dc810fd4731) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b98e38057729266f103498f85488eaf0') in 0.003559 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.050160 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/Type/SqlDataTypeMap.cs
+  artifactKey: Guid(0067dde0321d4fa5a4f81332e82ec469) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/Type/SqlDataTypeMap.cs using Guid(0067dde0321d4fa5a4f81332e82ec469) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2018ca8a993092fb73dd169667fa4a4e') in 0.003580 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.003752 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/BoolStore.cs
+  artifactKey: Guid(7b7090b0b2f1405fb2a0b5bbead9918d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/BoolStore.cs using Guid(7b7090b0b2f1405fb2a0b5bbead9918d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0d6c1161fc891bfd27e7afdf7e333c3') in 0.003423 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.022515 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/IntStore.cs
+  artifactKey: Guid(ebfb555d35884dbe90aaa6b0dfbd04b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/IntStore.cs using Guid(ebfb555d35884dbe90aaa6b0dfbd04b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97193adbb1fd9b9c1e55bc26eb3a2fc8') in 0.003366 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004686 seconds.
+  path: Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/LongStore.cs
+  artifactKey: Guid(caa64c1f84c045c887bebec2e7730ac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnitySQLiteAsync/_addOn/GameDB/Stores/LongStore.cs using Guid(caa64c1f84c045c887bebec2e7730ac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b1f71c9ab71fc7bf353dbf0f65aa2bb') in 0.003374 seconds 
