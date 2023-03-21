@@ -33,7 +33,7 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
         public static async UniTask<BitMask<T>> GetAsync(BitMask<T> obj, string key, bool addToList = false)
         {
             if (!_tableCreated) await CreateTableAsync();
-            obj.Value = await SqlAsync.AsyncConnection.ExecuteScalarAsync<long>(GetQuery(key));
+            obj.Value = await SqlAsync.Connection.ExecuteScalarAsync<long>(GetQuery(key));
             if (addToList) dictionary[key] = obj;
             return obj;
         }
@@ -48,7 +48,7 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
         public static async UniTask SetAsync(string key, BitMask<T> value, bool addToList = false)
         {
             if (!_tableCreated) await CreateTableAsync();
-            await SqlAsync.AsyncConnection.ExecuteScalarAsync<int>(SetQuery, key, value.Value);
+            await SqlAsync.Connection.ExecuteScalarAsync<int>(SetQuery, key, value.Value);
             if (addToList) dictionary[key] = value;
         }
 
@@ -61,7 +61,7 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
 
         private static async UniTask CreateTableAsync()
         {
-            await SqlAsync.AsyncConnection.ExecuteAsync(CreateQueryStr);
+            await SqlAsync.Connection.ExecuteAsync(CreateQueryStr);
             _tableCreatedAsync = true;
         }
 
@@ -73,7 +73,7 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
 
         private static async UniTask DeleteAllAsync()
         {
-            await SqlAsync.AsyncConnection.ExecuteAsync("DROP TABLE IF EXISTS BitMaskStore");
+            await SqlAsync.Connection.ExecuteAsync("DROP TABLE IF EXISTS BitMaskStore");
             _tableCreatedAsync = false;
         }
     }

@@ -1,5 +1,6 @@
 ﻿using SQLite;
 using UnitySQLiteAsync._addOn.GameDB.Stores;
+using UnitySQLiteAsync._addOn.GameDB.Stores.Core;
 
 namespace UnitySQLiteAsync._addOn.Example.Car
 {

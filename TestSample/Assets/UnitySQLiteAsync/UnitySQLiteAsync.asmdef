@@ -2,7 +2,8 @@
     "name": "SQLiteAsync",
     "rootNamespace": "",
     "references": [
-        "UniTask"
+        "UniTask",
+        "CatJson"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

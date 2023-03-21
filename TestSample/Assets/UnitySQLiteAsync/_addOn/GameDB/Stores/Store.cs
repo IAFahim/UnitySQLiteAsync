@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 
-namespace UnitySQLiteAsync._addOn.GameDB.Stores
+namespace UnitySQLiteAsync._addOn.GameDB.Stores.Core
 {
     public abstract class Store<T> where T : class, new()
     {
@@ -20,7 +20,7 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
         public static async UniTask<T> GetAsync(string key, T defaultValue = default, bool addToList = false)
         {
             if (!_tableCreatedAsync) await CreateTableAsync();
-            var value = await SqlAsync.AsyncConnection.FindAsync<T>(key) ?? defaultValue;
+            var value = await SqlAsync.Connection.FindAsync<T>(key) ?? defaultValue;
             if (addToList) dictionary[key] = value;
             return value;
         }
@@ -35,7 +35,7 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
         public static async UniTask SetAsync(T value, string key, bool addToList = false)
         {
             if (_tableCreatedAsync) await CreateTableAsync();
-            await SqlAsync.AsyncConnection.InsertOrReplaceAsync(value);
+            await SqlAsync.Connection.InsertOrReplaceAsync(value);
             if (addToList) dictionary[key] = value;
         }
 
@@ -47,7 +47,7 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
 
         private static async UniTask CreateTableAsync()
         {
-            await SqlAsync.AsyncConnection.CreateTableAsync<T>();
+            await SqlAsync.Connection.CreateTableAsync<T>();
             _tableCreatedAsync = true;
         }
 
@@ -58,7 +58,7 @@ namespace UnitySQLiteAsync._addOn.GameDB.Stores
         
         public async UniTask DeleteAllAsync()
         {
-            await SqlAsync.AsyncConnection.DropTableAsync<T>();
+            await SqlAsync.Connection.DropTableAsync<T>();
         }
     }
 }

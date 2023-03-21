@@ -6,19 +6,19 @@ namespace UnitySQLiteAsync._addOn.GameDB
 {
     internal static class SqlAsync
     {
-        private static SQLiteAsyncConnection _asyncConnection;
+        private static SQLiteAsyncConnection _connection;
 
-        public static SQLiteAsyncConnection AsyncConnection
+        public static SQLiteAsyncConnection Connection
         {
             get
             {
-                if (_asyncConnection == null)
+                if (_connection == null)
                 {
                     var path = Path.Combine(Application.persistentDataPath, "dbAsync.sqlite");
-                    _asyncConnection = new SQLiteAsyncConnection(path);
+                    _connection = new SQLiteAsyncConnection(path);
                 }
 
-                return _asyncConnection;
+                return _connection;
             }
         }
     }
